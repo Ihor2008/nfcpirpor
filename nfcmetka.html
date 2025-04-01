@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max Volume Sound</title>
+</head>
+<body>
+    <audio id="audio" src="https://drive.google.com/file/d/1qwp_6JoUgZrZGMy64FWVlSIEpmgUjjRD/view?usp=sharing" preload="auto"></audio>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const audio = document.getElementById("audio");
+            
+            function playSound() {
+                audio.volume = 1.0; // Встановлює гучність на максимум
+                audio.play().catch(error => console.error("Автозапуск заблокований", error));
+            }
+            
+            // Деякі браузери блокують автоматичне відтворення, тому чекаємо взаємодію
+            document.body.addEventListener("click", playSound, { once: true });
+            
+            // Якщо браузер дозволяє, запускаємо одразу
+            playSound();
+        });
+    </script>
+</body>
+</html>
